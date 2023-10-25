@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { logoutUser } from '../redux/authSlice';
-import {selectCurrentUser} from '../redux/selectors';
+import { selectCurrentUser } from '../redux/selectors'; 
 
 function UserMenu() {
     const dispatch = useDispatch();

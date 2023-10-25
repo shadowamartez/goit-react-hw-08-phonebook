@@ -4,6 +4,7 @@ const initialState = {
   isAuthenticated: false, 
   user: null, 
   token: null, 
+  currentUser: null,
 };
 
 const authSlice = createSlice({
@@ -14,16 +15,19 @@ const authSlice = createSlice({
       state.isAuthenticated = true;
       state.user = action.payload.user;
       state.token = action.payload.token;
+      state.currentUser = action.payload.currentUser;
     },
     logoutUser: (state) => {
       state.isAuthenticated = false;
       state.user = null;
       state.token = null;
+      state.currentUser = null; 
     },
     registerUser: (state, action) => {
       state.isAuthenticated = true; 
       state.user = action.payload.user; 
       state.token = action.payload.token; 
+      state.currentUser = action.payload.currentUser; 
     },
   },
 });
@@ -31,3 +35,4 @@ const authSlice = createSlice({
 export const { loginUser, logoutUser, registerUser } = authSlice.actions;
 
 export default authSlice.reducer;
+
