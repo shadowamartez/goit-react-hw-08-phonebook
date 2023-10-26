@@ -7,9 +7,9 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import LoginPage from '../pages/LoginPage';
 import RegisterPage from '../pages/RegisterPage';
 import PrivateRoute from '../utils/privateRoute';
-import Home from '../pages/HomePage';
 import ContactsPage from '../pages/ContactsPage';
 import { Route, Routes } from 'react-router-dom';
+import HomePage from '../pages/HomePage';
 
 function App() {
   const dispatch = useDispatch();
@@ -21,7 +21,6 @@ function App() {
   return (
     <Router>
       <div>
-        <h1>Phonebook</h1>
         <UserMenu />
         <Routes>
           <Route path="/login" element={<LoginPage />} />
@@ -29,7 +28,7 @@ function App() {
           <Route path="/contacts" element={<PrivateRoute />}>
             <Route index element={<ContactsPage />} />
           </Route>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<HomePage />} />
         </Routes>
         <GlobalStyles />
       </div>
