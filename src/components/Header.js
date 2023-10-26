@@ -5,25 +5,25 @@ import { logoutUser } from '../utils/api';
 import { selectIsLoggedIn } from '../redux/selectors';
 
 export const Header = () => {
-  const isLoggedIn = useSelector(selectIsLoggedIn);
-  const dispatch = useDispatch();
+    const isLoggedIn = useSelector(selectIsLoggedIn);
+    const dispatch = useDispatch();
 
-  return (
-    <header>
-      <div>
-        <Link to="/">Home</Link>
-        {isLoggedIn && <Link to="/contacts">Contacts</Link>}
-      </div>
-      {isLoggedIn ? (
+    return (
+        <header>
         <div>
-          <button onClick={() => {dispatch(logoutUser());}}>Log out</button>
+            <Link to="/">Home</Link>
+            {isLoggedIn && <Link to="/contacts">Contacts</Link>}
         </div>
-      ) : (
-        <div>
-          <Link to="/register">Register</Link>
-          <Link to="/login">Sign In</Link>
-        </div>
-      )}
-    </header>
-  );
+        {isLoggedIn ? (
+            <div>
+            <button onClick={() => {dispatch(logoutUser());}}>Log out</button>
+            </div>
+        ) : (
+            <div>
+            <Link to="/register">Register</Link>
+            <Link to="/login">Sign In</Link>
+            </div>
+        )}
+        </header>
+    );
 };

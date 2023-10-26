@@ -30,7 +30,9 @@ function App() {
       <UserMenu />
       <Navigation />
       <Routes>
-        <Route path="/" element={<SharedLayout />}></Route>
+        <Route path="/" element={<SharedLayout />}>
+          <Route index element={<HomePage />} />
+        </Route>
         <Route
           path="/login"
           element={
@@ -52,7 +54,6 @@ function App() {
             <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
           }
         />
-        <Route path="/" element={<HomePage />} />
       </Routes>
       <GlobalStyles />
     </>
