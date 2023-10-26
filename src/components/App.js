@@ -8,11 +8,10 @@ import RegisterPage from '../pages/RegisterPage';
 import ContactsPage from '../pages/ContactsPage';
 import { Route, Routes } from 'react-router-dom';
 import HomePage from '../pages/HomePage';
-import { selectToken } from '../redux/selectors';
+import { selectToken } from 'redux/selectors';
 import Navigation from './Navigation';
 import { PrivateRoute } from './PrivatRoute';
 import { RestrictedRoute } from './RestrictedRoute';
-import { SharedLayout } from './SharedLayout';
 
 function App() {
   const dispatch = useDispatch();
@@ -30,9 +29,6 @@ function App() {
       <UserMenu />
       <Navigation />
       <Routes>
-        <Route path="/" element={<SharedLayout />}>
-          <Route index element={<HomePage />} />
-        </Route>
         <Route
           path="/login"
           element={
@@ -54,6 +50,7 @@ function App() {
             <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
           }
         />
+        <Route path="/" element={<HomePage />} />
       </Routes>
       <GlobalStyles />
     </>
