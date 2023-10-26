@@ -1,7 +1,12 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchContacts } from '../utils/api';
-import { selectIsLoading, selectError } from '../redux/selectors';
+import {
+  selectIsLoading,
+  selectError,
+  selectToken,
+  selectIsRefreshing,
+} from '../redux/selectors';
 import { ContactForm } from '../components/ContactForm';
 import { ContactList } from '../components/ContactList';
 import { Filter } from '../components/Filter/Filter';
@@ -13,9 +18,15 @@ function ContactsPage() {
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
 
+  const isRefreshing = useSelector(selectIsRefreshing);
+  const token = useSelector(selectToken);
+
   useEffect(() => {
-    dispatch(fetchContacts());
-  }, [dispatch]);
+    if (token && !isRefreshing) {
+      dispatch(fetchContacts());
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div>
@@ -23,15 +34,10 @@ function ContactsPage() {
       <UserMenu />
       <ContactForm />
       <Filter />
-      {isLoading && !error ? (
-        <p>Loading...</p>
-      ) : (
-        <ContactList />
-      )}
+      {isLoading && !error ? <p>Loading...</p> : <ContactList />}
       <Outlet />
     </div>
   );
 }
 
 export default ContactsPage;
-

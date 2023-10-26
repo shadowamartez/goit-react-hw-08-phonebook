@@ -15,7 +15,7 @@ export function ContactList() {
     <ul>
       {contacts.map((contact) => (
         <li key={contact.id}>
-          {contact.name}: {contact.phone} <b></b>
+          {contact.name}: {contact.number} <b></b>
           <button onClick={() => handleDeleteContact(contact.id)}>Delete</button>
         </li>
       ))}

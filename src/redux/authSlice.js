@@ -7,13 +7,14 @@ const initialState = {
   token: null,
   currentUser: null,
   error: null,
+  isRefreshing: false,
 };
 
 const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {},
-  extraReducers: (builder) => {
+  extraReducers: builder => {
     builder
       .addCase(api.loginUser.fulfilled, (state, action) => {
         state.isAuthenticated = true;
@@ -22,7 +23,7 @@ const authSlice = createSlice({
         state.currentUser = action.payload.currentUser;
         state.error = null;
       })
-      .addCase(api.logoutUser.fulfilled, (state) => {
+      .addCase(api.logoutUser.fulfilled, state => {
         state.isAuthenticated = false;
         state.user = null;
         state.token = null;
@@ -48,6 +49,15 @@ const authSlice = createSlice({
       })
       .addCase(api.registerUser.rejected, (state, action) => {
         state.error = action.error.message;
+      })
+      .addCase(api.getCurrentUser.pending, (state, action) => {
+        state.isRefreshing = true;
+      })
+      .addCase(api.getCurrentUser.fulfilled, (state, action) => {
+        state.isRefreshing = false;
+      })
+      .addCase(api.getCurrentUser.rejected, (state, action) => {
+        state.isRefreshing = false;
       });
   },
 });

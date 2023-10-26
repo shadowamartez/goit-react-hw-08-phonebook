@@ -1,40 +1,60 @@
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { fetchContacts } from '../utils/api';
+import { useDispatch, useSelector } from 'react-redux';
+import { getCurrentUser } from '../utils/api';
 import UserMenu from './UserMenu';
 import { GlobalStyles } from './GlobalStyles';
-import { BrowserRouter as Router } from 'react-router-dom';
 import LoginPage from '../pages/LoginPage';
 import RegisterPage from '../pages/RegisterPage';
-import PrivateRoute from '../utils/privateRoute';
 import ContactsPage from '../pages/ContactsPage';
 import { Route, Routes } from 'react-router-dom';
 import HomePage from '../pages/HomePage';
+import { selectToken } from 'redux/selectors';
+import Navigation from './Navigation';
+import { PrivateRoute } from './PrivatRoute';
+import { RestrictedRoute } from './RestrictedRoute';
 
 function App() {
   const dispatch = useDispatch();
+  const token = useSelector(selectToken);
 
   useEffect(() => {
-    dispatch(fetchContacts());
-  }, [dispatch]);
+    if (token) {
+      dispatch(getCurrentUser());
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
-    <Router>
-      <div>
-        <UserMenu />
-        <Routes>
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/register" element={<RegisterPage />} />
-          <Route path="/contacts" element={<PrivateRoute />}>
-            <Route index element={<ContactsPage />} />
-          </Route>
-          <Route path="/" element={<HomePage />} />
-        </Routes>
-        <GlobalStyles />
-      </div>
-    </Router>
+    <>
+      <UserMenu />
+      <Navigation />
+      <Routes>
+        <Route
+          path="/login"
+          element={
+            <RestrictedRoute redirectTo="/contacts" component={<LoginPage />} />
+          }
+        />
+        <Route
+          path="/register"
+          element={
+            <RestrictedRoute
+              redirectTo="/contacts"
+              component={<RegisterPage />}
+            />
+          }
+        />
+        <Route
+          path="/contacts"
+          element={
+            <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
+          }
+        />
+        <Route path="/" element={<HomePage />} />
+      </Routes>
+      <GlobalStyles />
+    </>
   );
 }
 
 export default App;
-
