@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { loginUser } from '../redux/authSlice';
+import { loginUser } from '../utils/api';
 import { Outlet } from 'react-router-dom';
 
 function LoginPage() {
@@ -17,13 +17,13 @@ function LoginPage() {
       <h2>Login</h2>
       <input
         type="email"
-        placeholder="Електронна пошта"
+        placeholder="Email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
       <input
         type="password"
-        placeholder="Пароль"
+        placeholder="Password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
@@ -34,4 +34,3 @@ function LoginPage() {
 }
 
 export default LoginPage;
-

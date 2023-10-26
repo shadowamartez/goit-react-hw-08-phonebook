@@ -1,28 +1,28 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { logoutUser } from '../redux/authSlice';
-import { selectCurrentUser } from '../redux/selectors'; 
+import { logoutUser } from '../utils/api';
+import { selectCurrentUser } from '../redux/selectors';
 
 function UserMenu() {
-    const dispatch = useDispatch();
-    const currentUser = useSelector(selectCurrentUser);
+  const dispatch = useDispatch();
+  const currentUser = useSelector(selectCurrentUser);
 
-    const handleLogout = () => {
-        dispatch(logoutUser());
-    }
+  const handleLogout = () => {
+    dispatch(logoutUser());
+  }
 
-    return (
+  return (
+    <div>
+      {currentUser ? (
         <div>
-            {currentUser ? (
-                <div>
-                    <p>{currentUser.email}</p> 
-                    <button onClick={handleLogout}>Logout</button>
-                </div>
-            ) : (
-                <p>Please login or register.</p>
-            )}
+          <p>{currentUser.email}</p>
+          <button onClick={handleLogout}>Logout</button>
         </div>
-    );
+      ) : (
+        <p>Please login or register.</p>
+      )}
+    </div>
+  );
 }
 
 export default UserMenu;

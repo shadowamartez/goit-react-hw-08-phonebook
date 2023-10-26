@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { registerUser } from '../redux/authSlice';
+import { registerUser } from '../utils/api';
 import { Outlet } from 'react-router-dom';
 
 function RegisterPage() {

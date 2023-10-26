@@ -4,24 +4,21 @@ import { deleteContact } from '../utils/api';
 import { selectAllNeededContacts } from '../redux/selectors';
 
 export function ContactList() {
-    const contacts = useSelector(selectAllNeededContacts);
-    const dispatch = useDispatch();
+  const contacts = useSelector(selectAllNeededContacts);
+  const dispatch = useDispatch();
 
+  const handleDeleteContact = (contactId) => {
+    dispatch(deleteContact(contactId));
+  };
 
-    const handleDeleteContact = contactId => {
-        dispatch(deleteContact(contactId));
-    };
-
-    return (
-        <ul>
-        {contacts.map(contact => (
-            <li key={contact.id}>
-            {contact.name}: {contact.phone} <b></b>
-                <button onClick={evt => {
-                    handleDeleteContact(evt.target.value);
-                }}>Delete</button>
-            </li>
-        ))}
-        </ul>
-    );
+  return (
+    <ul>
+      {contacts.map((contact) => (
+        <li key={contact.id}>
+          {contact.name}: {contact.phone} <b></b>
+          <button onClick={() => handleDeleteContact(contact.id)}>Delete</button>
+        </li>
+      ))}
+    </ul>
+  );
 }

@@ -1,15 +1,15 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { fetchContacts } from '../utils/api'; 
-import  UserMenu  from './UserMenu'; 
+import { fetchContacts } from '../utils/api';
+import UserMenu from './UserMenu';
 import { GlobalStyles } from './GlobalStyles';
-import { BrowserRouter as Router }  from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import LoginPage from '../pages/LoginPage';
 import RegisterPage from '../pages/RegisterPage';
 import PrivateRoute from '../utils/privateRoute';
 import Home from '../pages/HomePage';
 import ContactsPage from '../pages/ContactsPage';
-import {Route, Routes} from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
 function App() {
   const dispatch = useDispatch();
@@ -22,14 +22,14 @@ function App() {
     <Router>
       <div>
         <h1>Phonebook</h1>
-        <UserMenu /> 
+        <UserMenu />
         <Routes>
-          <Route path="/login" component={LoginPage} />
-          <Route path="/register" component={RegisterPage} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
           <Route path="/contacts" element={<PrivateRoute />}>
-            <ContactsPage />
+            <Route index element={<ContactsPage />} />
           </Route>
-          <Route path="/" component={Home} />
+          <Route path="/" element={<Home />} />
         </Routes>
         <GlobalStyles />
       </div>
@@ -38,3 +38,4 @@ function App() {
 }
 
 export default App;
+
