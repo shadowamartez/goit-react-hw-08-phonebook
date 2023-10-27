@@ -6,10 +6,11 @@ export const StyledLink = styled(Link)`
     text-decoration: none; 
     margin: 0 10px; 
     font-weight: bold; 
+    font-size: 24px;
 `;
 
 export const StyledNavigationContainer = styled.div`
     display: flex;
-    justify-content: center; /* Центрування по горизонталі */
-    align-items: center; /* Центрування по вертикалі */
+    justify-content: center; 
+    align-items: center;
     `;

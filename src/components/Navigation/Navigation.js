@@ -1,27 +1,18 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { selectToken } from 'redux/selectors';
-import { logoutUser } from 'utils/api';
 import { StyledLink } from './Navigation.styled';
 import { StyledNavigationContainer } from './Navigation.styled';
+import UserMenu from 'components/UserMenu/UserMenu';
 
 function Navigation() {
   const isAuthenticated = useSelector(selectToken);
-  const dispatch = useDispatch();
-
-  const handleLogout = () => {
-    dispatch(logoutUser());
-  };
 
   return (
     <nav>
       <ul>
         {isAuthenticated ? (
-          <>
-            <li>
-              <button onClick={handleLogout}>logout</button>
-            </li>
-          </>
+          <UserMenu/>
         ) : (
           <>
             <StyledNavigationContainer>

@@ -38,8 +38,9 @@ export const GlobalStyles = createGlobalStyle`
     };
 
     input {
-        padding: 8px;
+        padding: 10px;
         margin-bottom: 16px; 
+        width: 250px;
     };
 
     button {
@@ -48,18 +49,6 @@ export const GlobalStyles = createGlobalStyle`
         border: none;
         padding: 8px 16px;
         cursor: pointer;
-    };
-
-    h1 {
-    font-size: 24px;
-    margin-bottom: 16px;
-    color: #333;
-    };
-
-    h2 {
-        font-size: 20px;
-        margin-bottom: 12px;
-        color: #007bff;
     };
 
     li {

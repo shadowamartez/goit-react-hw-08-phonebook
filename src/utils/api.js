@@ -98,9 +98,9 @@ export const getCurrentUser = createAsyncThunk(
   'auth/getCurrentUser',
   async (_, thunkApi) => {
     try {
-      const response = await axios.get('/users/current');
       const token = thunkApi.getState().auth.token;
       setAuthHeader(token);
+      const response = await axios.get('/users/current');
       return response.data;
     } catch (error) {
       throw error;

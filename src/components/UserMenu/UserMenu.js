@@ -1,7 +1,9 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { logoutUser } from '../utils/api';
-import { selectCurrentUser } from '../redux/selectors';
+import { logoutUser } from '../../utils/api';
+import { selectCurrentUser } from '../../redux/selectors';
+import { Layout } from './UserMenu.styled';
+import { Email } from './UserMenu.styled';
 
 function UserMenu() {
     const dispatch = useDispatch();
@@ -14,10 +16,10 @@ function UserMenu() {
     return (
         <div>
         {currentUser ? (
-            <div>
-            <p>{currentUser.email}</p>
+            <Layout>
+            <Email>{currentUser.email}</Email>
             <button onClick={handleLogout}>Logout</button>
-            </div>
+            </Layout>
         ) : (
             <p>Please login or register.</p>
         )}

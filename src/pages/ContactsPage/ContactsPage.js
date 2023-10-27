@@ -1,17 +1,18 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchContacts } from '../utils/api';
+import { fetchContacts } from '../../utils/api';
 import {
   selectIsLoading,
   selectError,
   selectToken,
   selectIsRefreshing,
-} from '../redux/selectors';
-import { ContactForm } from '../components/ContactForm/ContactForm';
-import { ContactList } from '../components/ContactList';
-import { Filter } from '../components/Filter/Filter';
+} from '../../redux/selectors';
+import { ContactForm } from '../../components/ContactForm/ContactForm';
+import { ContactList } from '../../components/ContactList/ContactList';
+import { Filter } from '../../components/Filter/Filter';
 import { Outlet } from 'react-router-dom';
-import UserMenu from 'components/UserMenu';
+import { StyledPageContainer } from './ContactsPage.styled';
+import { Title } from './ContactsPage.styled';
 
 function ContactsPage() {
   const dispatch = useDispatch();
@@ -29,14 +30,13 @@ function ContactsPage() {
   }, []);
 
   return (
-    <div>
-      <h2>Contacts</h2>
-      <UserMenu/>
+    <StyledPageContainer>
+      <Title>Contacts</Title>
       <ContactForm />
       <Filter />
       {isLoading && !error ? <p>Loading...</p> : <ContactList />}
       <Outlet />
-    </div>
+    </StyledPageContainer>
   );
 }
 

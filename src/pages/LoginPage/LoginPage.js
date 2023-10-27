@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { loginUser } from '../utils/api';
+import { loginUser } from '../../utils/api';
 import { Outlet } from 'react-router-dom';
+import { Title } from './LoginPage.styled';
+import { StyledPageContainer } from './LoginPage.styled';
 
 function LoginPage() {
   const dispatch = useDispatch();
@@ -13,25 +15,23 @@ function LoginPage() {
   }
 
   return (
-    <div>
-      <h2>Login</h2>
+    <StyledPageContainer>
+      <Title>Login</Title>
       <input
         type="email"
         placeholder="Email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
-      <b> </b>
       <input
         type="password"
         placeholder="Password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-      <b> </b>
       <button onClick={handleLogin}>Login</button>
       <Outlet />
-    </div>
+    </StyledPageContainer>
   );
 }
 

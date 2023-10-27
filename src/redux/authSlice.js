@@ -5,7 +5,6 @@ const initialState = {
   isAuthenticated: false,
   user: null,
   token: null,
-  currentUser: null,
   error: null,
   isRefreshing: false,
 };
@@ -20,28 +19,24 @@ const authSlice = createSlice({
         state.isAuthenticated = true;
         state.user = action.payload.user;
         state.token = action.payload.token;
-        state.currentUser = action.payload.currentUser;
         state.error = null;
       })
       .addCase(api.logoutUser.fulfilled, state => {
         state.isAuthenticated = false;
         state.user = null;
         state.token = null;
-        state.currentUser = null;
         state.error = null;
       })
       .addCase(api.registerUser.fulfilled, (state, action) => {
         state.isAuthenticated = true;
         state.user = action.payload.user;
         state.token = action.payload.token;
-        state.currentUser = action.payload.currentUser;
         state.error = null;
       })
       .addCase(api.loginUser.rejected, (state, action) => {
         state.isAuthenticated = false;
         state.user = null;
         state.token = null;
-        state.currentUser = null;
         state.error = action.error.message;
       })
       .addCase(api.logoutUser.rejected, (state, action) => {

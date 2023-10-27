@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { registerUser } from '../utils/api';
+import { registerUser } from '../../utils/api';
 import { Outlet } from 'react-router-dom';
+import { StyledPageContainer } from './RegisterPage.styled';
+import { Title } from './RegisterPage.styled';
 
 function RegisterPage() {
   const dispatch = useDispatch();
@@ -14,32 +16,29 @@ function RegisterPage() {
   }
 
   return (
-    <div>
-      <h2>Register</h2>
+    <StyledPageContainer>
+      <Title>Register</Title>
       <input
         type="text"
         placeholder="Name"
         value={name}
         onChange={(e) => setName(e.target.value)}
       />
-      <b> </b>
       <input
         type="email"
         placeholder="Email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
-      <b> </b>
       <input
         type="password"
         placeholder="Password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-      <b> </b>
       <button onClick={handleRegister}>Register</button>
       <Outlet />
-    </div>
+    </StyledPageContainer>
   );
 }
 

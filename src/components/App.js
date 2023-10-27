@@ -2,14 +2,14 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCurrentUser } from '../utils/api';
 import { GlobalStyles } from './GlobalStyles';
-import LoginPage from '../pages/LoginPage';
-import RegisterPage from '../pages/RegisterPage';
-import ContactsPage from '../pages/ContactsPage';
+import LoginPage from '../pages/LoginPage/LoginPage';
+import RegisterPage from '../pages/RegisterPage/RegisterPage';
+import ContactsPage from '../pages/ContactsPage/ContactsPage';
 import { Route, Routes } from 'react-router-dom';
-import HomePage from '../pages/HomePage';
+import HomePage from '../pages/HomePage/HomePage';
 import { selectToken } from 'redux/selectors';
 import Navigation from './Navigation/Navigation';
-import { PrivateRoute } from './PrivatRoute';
+import { PrivateRoute } from './PrivateRoute';
 import { RestrictedRoute } from './RestrictedRoute';
 
 function App() {
