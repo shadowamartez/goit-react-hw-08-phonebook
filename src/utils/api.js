@@ -105,5 +105,5 @@ export const getCurrentUser = createAsyncThunk(
     } catch (error) {
       throw error;
     }
-  }
-);
+  });
+

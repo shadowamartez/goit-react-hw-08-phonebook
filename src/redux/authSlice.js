@@ -50,9 +50,13 @@ const authSlice = createSlice({
       })
       .addCase(api.getCurrentUser.fulfilled, (state, action) => {
         state.isRefreshing = false;
+        state.isAuthenticated = true; 
+        state.user = action.payload; 
       })
       .addCase(api.getCurrentUser.rejected, (state, action) => {
         state.isRefreshing = false;
+        state.error = action.error.message;
+        state.isAuthenticated = false;
       });
   },
 });

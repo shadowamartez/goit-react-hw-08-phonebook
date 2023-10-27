@@ -17,6 +17,9 @@ function Navigation() {
           <>
             <StyledNavigationContainer>
               <li>
+                <StyledLink to="/">Home</StyledLink>
+              </li>
+              <li>
                 <StyledLink to="/login">Login</StyledLink>
               </li>
               <li>
