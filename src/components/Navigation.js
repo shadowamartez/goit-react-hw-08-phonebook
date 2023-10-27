@@ -1,10 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectToken } from 'redux/selectors';
+import { logoutUser } from 'utils/api';
 
 function Navigation() {
   const isAuthenticated = useSelector(selectToken);
+  const dispatch = useDispatch();
+
+  const handleLogout = () => {
+    dispatch(logoutUser());
+  };
 
   return (
     <nav>
@@ -12,10 +18,7 @@ function Navigation() {
         {isAuthenticated ? (
           <>
             <li>
-              <Link to="/contacts">Contacts</Link>
-            </li>
-            <li>
-              <Link to="/logout">Logout</Link>
+              <button onClick={handleLogout}>logout</button>
             </li>
           </>
         ) : (

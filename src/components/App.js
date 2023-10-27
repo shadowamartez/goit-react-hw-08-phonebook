@@ -29,6 +29,7 @@ function App() {
       <UserMenu />
       <Navigation />
       <Routes>
+        <Route path="/" element={<HomePage />} />
         <Route
           path="/login"
           element={
@@ -50,7 +51,6 @@ function App() {
             <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
           }
         />
-        <Route path="/" element={<HomePage />} />
       </Routes>
       <GlobalStyles />
     </>

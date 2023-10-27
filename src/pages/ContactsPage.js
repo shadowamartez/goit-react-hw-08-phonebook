@@ -10,7 +10,6 @@ import {
 import { ContactForm } from '../components/ContactForm';
 import { ContactList } from '../components/ContactList';
 import { Filter } from '../components/Filter/Filter';
-import UserMenu from '../components/UserMenu';
 import { Outlet } from 'react-router-dom';
 
 function ContactsPage() {
@@ -31,7 +30,6 @@ function ContactsPage() {
   return (
     <div>
       <h2>Contacts</h2>
-      <UserMenu />
       <ContactForm />
       <Filter />
       {isLoading && !error ? <p>Loading...</p> : <ContactList />}
