@@ -32,6 +32,7 @@ function Navigation() {
                 <StyledLink to="/register">Register</StyledLink>
               </li>
           </StyledNavigationContainer>
+          <p>Please login or register.</p>
           </>
         )}
       </ul>
