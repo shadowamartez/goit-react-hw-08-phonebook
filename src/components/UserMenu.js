@@ -4,25 +4,25 @@ import { logoutUser } from '../utils/api';
 import { selectCurrentUser } from '../redux/selectors';
 
 function UserMenu() {
-  const dispatch = useDispatch();
-  const currentUser = useSelector(selectCurrentUser);
+    const dispatch = useDispatch();
+    const currentUser = useSelector(selectCurrentUser);
 
-  const handleLogout = () => {
-    dispatch(logoutUser());
-  }
+    const handleLogout = () => {
+        dispatch(logoutUser());
+    }
 
-  return (
-    <div>
-      {currentUser ? (
+    return (
         <div>
-          <p>{currentUser.email}</p>
-          <button onClick={handleLogout}>Logout</button>
+        {currentUser ? (
+            <div>
+            <p>{currentUser.email}</p>
+            <button onClick={handleLogout}>Logout</button>
+            </div>
+        ) : (
+            <p>Please login or register.</p>
+        )}
         </div>
-      ) : (
-        <p>Please login or register.</p>
-      )}
-    </div>
-  );
+    );
 }
 
 export default UserMenu;

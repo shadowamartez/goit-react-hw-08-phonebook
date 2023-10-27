@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCurrentUser } from '../utils/api';
-import UserMenu from './UserMenu';
 import { GlobalStyles } from './GlobalStyles';
 import LoginPage from '../pages/LoginPage';
 import RegisterPage from '../pages/RegisterPage';
@@ -9,7 +8,7 @@ import ContactsPage from '../pages/ContactsPage';
 import { Route, Routes } from 'react-router-dom';
 import HomePage from '../pages/HomePage';
 import { selectToken } from 'redux/selectors';
-import Navigation from './Navigation';
+import Navigation from './Navigation/Navigation';
 import { PrivateRoute } from './PrivatRoute';
 import { RestrictedRoute } from './RestrictedRoute';
 
@@ -26,7 +25,6 @@ function App() {
 
   return (
     <>
-      <UserMenu />
       <Navigation />
       <Routes>
         <Route path="/" element={<HomePage />} />
@@ -48,7 +46,7 @@ function App() {
         <Route
           path="/contacts"
           element={
-            <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
+            <PrivateRoute redirectTo="/" component={<ContactsPage />} />
           }
         />
       </Routes>

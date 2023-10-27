@@ -7,10 +7,11 @@ import {
   selectToken,
   selectIsRefreshing,
 } from '../redux/selectors';
-import { ContactForm } from '../components/ContactForm';
+import { ContactForm } from '../components/ContactForm/ContactForm';
 import { ContactList } from '../components/ContactList';
 import { Filter } from '../components/Filter/Filter';
 import { Outlet } from 'react-router-dom';
+// import UserMenu from 'components/UserMenu';
 
 function ContactsPage() {
   const dispatch = useDispatch();
@@ -30,6 +31,7 @@ function ContactsPage() {
   return (
     <div>
       <h2>Contacts</h2>
+      {/* <UserMenu/> */}
       <ContactForm />
       <Filter />
       {isLoading && !error ? <p>Loading...</p> : <ContactList />}

@@ -22,18 +22,21 @@ function RegisterPage() {
         value={name}
         onChange={(e) => setName(e.target.value)}
       />
+      <b> </b>
       <input
         type="email"
         placeholder="Email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
+      <b> </b>
       <input
         type="password"
         placeholder="Password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
+      <b> </b>
       <button onClick={handleRegister}>Register</button>
       <Outlet />
     </div>

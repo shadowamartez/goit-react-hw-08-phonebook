@@ -1,8 +1,8 @@
 import React from 'react';
 import { Formik, Field, Form } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from '../utils/api';
-import { selectContacts } from '../redux/selectors';
+import { addContact } from '../../utils/api';
+import { selectContacts } from '../../redux/selectors';
 
 export function ContactForm() {
   const dispatch = useDispatch();

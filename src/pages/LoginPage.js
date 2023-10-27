@@ -21,12 +21,14 @@ function LoginPage() {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
+      <b> </b>
       <input
         type="password"
         placeholder="Password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
+      <b> </b>
       <button onClick={handleLogin}>Login</button>
       <Outlet />
     </div>

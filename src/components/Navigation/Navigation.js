@@ -1,8 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectToken } from 'redux/selectors';
 import { logoutUser } from 'utils/api';
+import { StyledLink } from './Navigation.styled';
+import { StyledNavigationContainer } from './Navigation.styled';
 
 function Navigation() {
   const isAuthenticated = useSelector(selectToken);
@@ -23,12 +24,14 @@ function Navigation() {
           </>
         ) : (
           <>
-            <li>
-              <Link to="/login">Login</Link>
-            </li>
-            <li>
-              <Link to="/register">Register</Link>
-            </li>
+            <StyledNavigationContainer>
+              <li>
+                <StyledLink to="/login">Login</StyledLink>
+              </li>
+              <li>
+                <StyledLink to="/register">Register</StyledLink>
+              </li>
+          </StyledNavigationContainer>
           </>
         )}
       </ul>
