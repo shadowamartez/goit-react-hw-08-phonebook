@@ -15,14 +15,12 @@ function UserMenu() {
 
     return (
         <div>
-        {currentUser ? (
+            {currentUser ? (
             <Layout>
-            <Email>{currentUser.email}</Email>
-            <button onClick={handleLogout}>Logout</button>
+                <Email>{currentUser.email}</Email>
+                <button onClick={handleLogout}>Logout</button>
             </Layout>
-        ) : (
-            <p>Please login or register.</p>
-        )}
+            ) : null}
         </div>
     );
 }
